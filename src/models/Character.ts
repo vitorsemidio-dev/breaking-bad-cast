@@ -5,4 +5,5 @@ export default interface Character {
   status: string;
   img: string;
   birthday: string;
+  portrayed: string;
 }
