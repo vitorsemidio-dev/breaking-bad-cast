@@ -5,15 +5,25 @@ import Header from './components/ui/Header';
 
 import './App.css';
 
+interface Character {
+  char_id: number;
+  name: string;
+  nickname: string;
+  status: string;
+  img: string;
+  birthday: string;
+}
+
 const App: React.FC = () => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<Character[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchItems = async () => {
-      const result = await axios(`https://www.breakingbadapi.com/api/characters`);
+      const result = await axios.get<Character[]>(`https://www.breakingbadapi.com/api/characters`);
 
-      console.log(result.data);
+      setItems(result.data);
+      setIsLoading(false);
     }
 
     fetchItems();
