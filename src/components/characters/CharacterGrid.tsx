@@ -8,12 +8,16 @@ interface Props {
 }
 
 const CharacterGrid: React.FC<Props> = ({ isLoading, items }) => {
-  console.log(items);
-  console.log(isLoading);
   return (
-    <div>
-      CharacterGrid
-    </div>
+    isLoading ? (
+      <h1>Loading...</h1>
+    ) : (
+      <section className="cards">
+        {items.map(item => (
+          <h1 key={item.char_id}>{item.name}</h1>
+        ))}
+      </section>
+    )
   )
 }
 
