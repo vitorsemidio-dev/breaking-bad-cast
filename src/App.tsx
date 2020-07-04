@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import Character from './models/Character';
+
 import Header from './components/ui/Header';
 import CharacterGrid from './components/characters/CharacterGrid';
 
 import './App.css';
-
-export interface Character {
-  char_id: number;
-  name: string;
-  nickname: string;
-  status: string;
-  img: string;
-  birthday: string;
-}
 
 const App: React.FC = () => {
   const [items, setItems] = useState<Character[]>([]);

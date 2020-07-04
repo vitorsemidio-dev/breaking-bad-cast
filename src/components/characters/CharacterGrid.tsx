@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Character } from '../../App';
+import Character from '../../models/Character';
 
 interface Props {
   isLoading: boolean;
