@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 
-const Search: React.FC = () => {
-  const [search, setSearch] = useState('');
+interface Props {
+  getQuery: (q: string) => void;
+}
+
+const Search: React.FC<Props> = ({ getQuery }) => {
+  const [text, setText] = useState('');
+
+  const onChange = (q: string) => {
+    setText(q);
+    getQuery(q);
+  }
+  
   return (
     <section className="search">
       <form>
@@ -9,6 +19,8 @@ const Search: React.FC = () => {
           type='text'
           className='form-control'
           placeholder='Search characters'
+          value={text}
+          onChange={(e) => onChange(e.target.value)}
           autoFocus
         />
       </form>

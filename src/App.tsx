@@ -12,22 +12,25 @@ import './App.css';
 const App: React.FC = () => {
   const [items, setItems] = useState<Character[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     const fetchItems = async () => {
-      const result = await axios.get<Character[]>(`https://www.breakingbadapi.com/api/characters`);
+      const result = await axios.get<Character[]>(
+        `https://www.breakingbadapi.com/api/characters?name=${query}`
+      );
 
       setItems(result.data);
       setIsLoading(false);
     }
 
     fetchItems();
-  }, []);
+  }, [query]);
 
   return (
     <div className="container">
       <Header />
-      <Search />
+      <Search getQuery={setQuery} />
       <CharacterGrid
         isLoading={isLoading}
         items={items}
