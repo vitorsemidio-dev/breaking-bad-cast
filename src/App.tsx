@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Header from './components/ui/Header';
+import CharacterGrid from './components/characters/CharacterGrid';
 
 import './App.css';
 
-interface Character {
+export interface Character {
   char_id: number;
   name: string;
   nickname: string;
@@ -32,6 +33,10 @@ const App: React.FC = () => {
   return (
     <div className="container">
       <Header />
+      <CharacterGrid
+        isLoading={isLoading}
+        items={items}
+       />
     </div>
   );
 }
